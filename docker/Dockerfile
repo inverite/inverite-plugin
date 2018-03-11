@@ -5,7 +5,7 @@ RUN groupadd -g 1001 -r django \
     && useradd -m -u 1001 -r -g django django
 
 RUN apt-get update
-RUN apt-get install -y vim-nox telnet strace mysql-client less
+RUN apt-get install -y vim-nox telnet strace  less
 COPY ./requirements.txt requirements.txt
 RUN pip install -r requirements.txt && rm requirements.txt
 
