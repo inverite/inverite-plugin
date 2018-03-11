@@ -1,0 +1,18 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<style>
+#myModal iframe {
+  height: 80%;
+}
+</style>
+
+<div class="well">
+   {% if messages %}
+      <div class="row">
+<strong>There was an error:</strong>
+       {% for message in messages %}
+       <div class="alert alert-{% if messages.tags %}{{ message.tags }}{% else %}warning{% endif %}">{{ message }}</li>
+       {% endfor %}
+       </div>
+   {% endif %}
+</div>
+

@@ -1,0 +1,11 @@
+version: '2'
+services:
+  inverite-plugin:
+    image: inverite-plugin
+    logging:
+      driver: "journald"
+    env_file: ".env"
+    volumes:
+      - "/this/folder:/opt/project"
+    ports:
+      - "8000:8000"
