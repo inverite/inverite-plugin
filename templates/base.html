@@ -1,0 +1,50 @@
+<!DOCTYPE HTML>
+{% load static %}
+<html>
+    <head>
+        <meta name="viewport" content="initial-scale = 1.0,maximum-scale = 3.0, user-scalable=1" />
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+
+        <link rel="stylesheet" href="https://www.inverite.com/static/css/style.css">
+        <link rel="stylesheet" href="https://www.inverite.com/static/css/animate.css">
+        <link rel="stylesheet" href="https://www.inverite.com/static/font-awesome/css/font-awesome.css">
+        <link rel="stylesheet" href="{% static "js/jquery-ui-1.12.1/jquery-ui.min.css" %}">
+
+        <script src="{% static "js/jquery-1.12.4.min.js" %}"></script>
+        <script src="{% static "js/jquery-1.12.4.min.js" %}"></script>
+        <script src="{% static "js/jquery-ui-1.12.1/jquery-ui.min.js" %}"></script>
+        <link rel="stylesheet" href="{% static "js/bootstrap-combobox.css" %}">
+        <script src="{% static "js/bootstrap-combobox.js" %}"></script>
+        <style>
+          body {
+             background-color: #ffffff !important;
+             font-family: "open sans","Helvetica Neue",Helvetica,Arial,sans-serif !important;
+          }
+         .heading {
+            color: #666666;
+            font-size: 22px;
+            font-weight: bold;
+         }
+         .headingText {
+            color: #333;
+            font-size: 20px;
+            font-weight: bold;
+         }
+         select.styled {
+            border: 1px solid #999999;
+            border-radius: 6px;
+            font: 14px Arial,Helvetica,sans-serif;
+            margin-right: 5px;
+            max-width: 300px;
+            padding: 4px;
+         }
+        </style>
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+    </head>
+    <body>
+
+{% block content %}
+{% endblock %}
+
+   </body>
+</html>

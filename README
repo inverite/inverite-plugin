@@ -1,0 +1,10 @@
+Inverite Verification Full Control API Example Code.
+
+- Please copy .env.sample to .env with your appropriate account details & settings
+- Please make sure that you include your businesss full legal name in disclosures to the customer
+- Link to Inverite privacy policy *must* be included on the web page displayed to the customer
+- Docker image can be built with docker/build.sh
+- Docker currently runs a plain text webserver on port 8000 which you would locally proxy SSL requests to
+- We recommend symlinking docker/docker-compose.yml (once created from .sample file) into this dir, if running docker
+- IP and Useragent must be submitted correctly, current setup is for NGINX and docker, please make sure IP is accurate or there will be lots of issues in the resulting verification attempts
+

@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block content %}
+      <div class="container-fluid">
+         <div class="row">
+            <div class="col-sm-1">&nbsp;</div>
+         </div>
+         <div class="row">
+            <div class="col-sm-5 headingText">
+               <img src="https://www.inverite.com/static/logo/inverite.png">
+            </div>
+         </div>
+         <p>Please select your bank to continue: </p>
+         <form method="POST"  action="{% url 'provide_challenge_response' guid bankID job_id %}" autocomplete="off">
+         {% csrf_token %} 
+         <div class="row">
+            <div class="form-group col-sm-3">
+               <label class="control-label" for="challenge_response">{{ challenge }}</label>
+                  <div>
+                     <input type="text" name="challenge_response" class="form-control"/>
+                  </div>
+            </div> 
+         </div>
+         <div class="row">
+            <div class="form-group col-sm-5">
+               By pressing Continue, I agree to <a href="https://www.inverite.com/terms" target="_blank">terms and conditions</a> and both request and authorize the transmission of all submitted session data to {{ MERCHANT_NAME }}.
+            </div>
+         </div>
+         <div class="row">
+            <div class="form-group col-sm-3">
+               <button name="save" type="submit" class="btn btn-md btn-block btn-success">Continue</button>
+            </div>
+         </div>
+         </form>
+      </div>
+
+{% endblock %}

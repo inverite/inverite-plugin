@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+{% block content %}
+      <div class="container-fluid">
+         <div class="row">
+            <div class="col-sm-1">&nbsp;</div>
+         </div>
+         <div class="row">
+            <div class="col-sm-5 headingText">
+               <img src="https://www.inverite.com/static/logo/inverite.png">
+            </div>
+         </div>
+         <p>Please enter your online banking information below:</p>
+         <form method="POST" action="{% url 'bank_form' guid bankID %}"  autocomplete="off">
+         {% csrf_token %} 
+         {% for field in fields %}
+         <div class="row">
+            <div class="form-group col-sm-3">
+               <label class="control-label" for="{{ field.name }}">{{ field.label }}</label>
+                  <div>
+                  {% if field.type == "Select" %}
+                     <select name="{{ field.name }}">
+                        <option value="" selected>Please Select...</option>
+                        {% for option in field.options %}
+                           <option value="{{ option.value }}">{{ option.label }}</option>
+                        {% endfor %}
+                     </select>
+                  {% elif field.type == "Password" %}
+                     <input type="Password" name="{{ field.name }}" class="form-control"/>
+                  {% else %}
+                     <input type="text" name="{{ field.name }}" class="form-control"/>
+                  {% endif %}
+                  </div>
+            </div> 
+         </div>
+         {% endfor %}
+         <div class="row">
+            <div class="form-group col-sm-3">
+               By pressing Continue, I agree to <a href="https://www.inverite.com/terms" target="_blank">terms and conditions</a> and both request and authorize the transmission of all submitted session data to  {{ MERCHANT_NAME }}.
+            </div>
+         </div>
+         {% if status %}
+         <div class="row">
+            <div class="col-sm-3">
+               <div class="alert alert-warning">
+                  <strong>Error!</strong>
+                  {% if status == "authfail" %}
+                     The Username or Password you have entered is incorrect.  Please try again.
+                  {% else %}
+                     {{ message }}
+                  {% endif %}
+               </div>
+            </div>
+         </div>
+        {% endif %}
+        {% if form_errors %}
+         <div class="row">
+            <div class="col-sm-3">
+               <div class="alert alert-warning">
+                  <strong>There was an error in your form.  Please correct the following:</strong>
+                  {% for error in form_errors %}
+                     <br> - {{ error }}
+                  {% endfor %}
+               </div>
+            </div>
+         </div>
+        {% endif %}
+        {% if errors %}
+         <div class="row">
+            <div class="col-sm-3">
+               <div class="alert alert-warning">
+                  <strong>Error!</strong>
+                  {% for error in errors %}
+                     {{ error }}
+                  {% endfor %}
+               </div>
+            </div>
+         </div>
+        {% endif %}
+         <div class="row">
+            <div class="form-group col-sm-3">
+               <button name="save" type="submit" class="btn btn-md btn-block btn-success">Continue</button>
+            </div>
+         </div>
+         </form>
+      </div>
+
+{% endblock %}
