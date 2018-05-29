@@ -38,6 +38,9 @@
                else if (msg.status == 'need_input') {
                   window.location = "{% url 'challenge_response' guid bankID job_id %}";
                }
+               else if (msg.status == 'need_dropdown_input') {
+                  window.location = "{% url 'challenge_response_dropdown' guid bankID job_id %}";
+               }
                else if (msg.status == 'need_image_coordinate_input') {
                   window.location = "{% url 'challenge_response_image' guid bankID job_id %}";
                }

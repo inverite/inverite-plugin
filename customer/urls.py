@@ -21,6 +21,8 @@ urlpatterns = [
          views.success, name='success'),
     path('request/<guid>/challenge_response/<bankID>/<job_id>',
          views.challenge_response, name='challenge_response'),
+    path('request/<guid>/challenge_response_dropdown/<bankID>/<job_id>',
+         views.challenge_response_dropdown, name='challenge_response_dropdown'),
     path('request/<guid>/challenge_response_image/<bankID>/<job_id>',
          views.challenge_response_image, name='challenge_response_image'),
     path('request/<guid>/provide_challenge_response/<bankID>/<job_id>',

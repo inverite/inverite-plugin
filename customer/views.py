@@ -159,6 +159,12 @@ def session_status_refresh(request, guid, bankID, job_id):
                           {"guid": guid, "bankID": bankID,
                            "job_id": job_id,
                            "challenge": result.get("challenge", "")})
+        elif status == "need_dropdown_input":
+            return render(request, "customer/challenge_response_dropdown.html",
+                          {"guid": guid, "bankID": bankID,
+                           "job_id": job_id,
+                           "challenge": result.get("challenge", ""),
+                           "options": result.get("options", "")})
         elif status == "need_image_coordinate_input":
             return render(request, "customer/challenge_response_image.html",
                           {"guid": guid, "bankID": bankID,
@@ -190,6 +196,21 @@ def challenge_response_image(request, guid, bankID, job_id):
                   {"guid": guid, "bankID": bankID,
                    "job_id": job_id,
                    "challenge": result.get("challenge", "")})
+
+
+@xframe_options_exempt
+def challenge_response_dropdown(request, guid, bankID, job_id):
+    try:
+        result = inverite.fetch_session_status(job_id)
+    except Exception as e:
+        messages.error(request, e)
+        return showerror(request)
+
+    return render(request, "customer/challenge_response_dropdown.html",
+                  {"guid": guid, "bankID": bankID,
+                   "job_id": job_id,
+                   "challenge": result.get("challenge", ""),
+                   "options": result.get("options", "")})
 
 
 @xframe_options_exempt
